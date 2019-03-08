@@ -40,4 +40,10 @@ class userController extends Controller
         return "SUCCESS";
         return $request->all();
     }
+
+    public function createPost()
+    {
+        return view('post');
+    }
+
 }

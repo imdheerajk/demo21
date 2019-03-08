@@ -19,6 +19,8 @@ Route::get('/contactus', 'userController@contact');
 Route::get('/alluser', 'userController@alluser');
 Route::get('/create', 'userController@create');
 Route::post('/alluser', 'userController@store');
+
+Route::resource('/post','userController@createPost');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
