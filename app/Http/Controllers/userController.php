@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MyBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use MyBlog\User;
 class userController extends Controller
 {
     public function contact(){
