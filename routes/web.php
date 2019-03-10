@@ -15,12 +15,12 @@ Route::get('/', function () {
 
     return view('welcome');
 });
-Route::get('/contactus', 'userController@contact');
-Route::get('/alluser', 'userController@alluser');
-Route::get('/create', 'userController@create');
-Route::post('/alluser', 'userController@store');
+Route::get('/contactUs', 'userController@contact');
+Route::get('/aboutUs', 'userController@about');
 
-Route::resource('/post','userController@createPost');
+
+Route::get('/createpost','createPostController@createPost')->middleware('auth');
+Route::post('/insertpost','createPostController@insertPost');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

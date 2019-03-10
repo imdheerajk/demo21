@@ -34,6 +34,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contactUs">{{ __('Contact Us') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/aboutUs">{{ __('About Us') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/createpost">{{ __('Create Post') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contactUs">{{ __('Contact Us') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/aboutUs">{{ __('About Us') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/createpost" >{{ __('Create Post') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" >{{ __('My Posts') }}</a>
+                            </li>
+
+                        @endguest
 
                     </ul>
 
