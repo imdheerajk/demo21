@@ -3,6 +3,7 @@
 namespace MyBlog\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MyBlog\PostBlog;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $userid = \Auth::user()->id;
+        $posts = PostBlog::all();
+
+        return view('home')->with('post',$posts);
     }
 }

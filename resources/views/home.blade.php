@@ -15,8 +15,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="card-title">
+                        Your Posts
+                    </div>
+                   @foreach ($post as $val)
+                        <div class="card-header">{{$val->subject}}</div>
+                        <div class="card-body">{{$val->post}}</div>
 
-                    You are logged in!
+                   @endforeach
+
+
                 </div>
             </div>
         </div>

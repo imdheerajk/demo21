@@ -18,12 +18,21 @@ class createPostController extends Controller
     {
         $post = $REQUEST->input('createpost');
         $userid = \Auth::user()->id;
-
+        $datetime = date('Y-m-d H:i:s');
+        $subject = $REQUEST->input('subject');
         DB::table('post_blogs')->insert(
-            ['user_id' => $userid, 'post' => $post]
+            ['user_id' => $userid, 'post' => $post, 'subject'=>$subject, 'created_at'=>$datetime]
         );
+        return redirect('/home')->with('status', 'Blog posted successfully');
 
-        echo "Record inserted successfully.<br/>";
-        echo '<a href = "/createpost">Click Here</a> to go back.';
+    }
+
+    public function displayPost()
+    {
+        $posts = posts::selectRaw("subject, post, created_at")->get();
+        $data = [
+            'post' => $posts
+        ];
+        return view('home',$data);
     }
 }
