@@ -29,7 +29,7 @@
         });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHKsduPMA-9LPTV6tp85EsjwBR0d3Kmt4&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
         async defer></script>
 </body>
 </html>
