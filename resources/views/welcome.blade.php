@@ -70,6 +70,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+                        <a class="nav-link" href="/contactUs">{{ __('Contact Us') }}</a>
+
+                        <a class="nav-link" href="/aboutUs">{{ __('About Us') }}</a>
+
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))

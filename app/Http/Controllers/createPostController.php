@@ -35,4 +35,18 @@ class createPostController extends Controller
         ];
         return view('home',$data);
     }
+
+    public function insertContactUsMessage(Request $request)
+    {
+        $names = $request->input('name');
+        $emailid = $request->input('email');
+        $msg = $request->input('msg');
+        $datetime = date('Y-m-d H:i:s');
+
+        DB::table('contactUs')->insert(
+            ['name' => $names, 'email' => $emailid, 'message'=>$msg, 'created_at'=>$datetime]
+        );
+        return redirect('/contactUs')->with('status', 'Your message sent successfully, Thanks!!!');
+
+    }
 }
