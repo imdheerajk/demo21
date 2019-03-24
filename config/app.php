@@ -8,7 +8,7 @@ return [
     Google maps API KEY
     ------------------------
      */
-    'GOOGLEAPIKEY' => 'AIzaSyCHKsduPMA-9LPTV6tp85EsjwBR0d3Kmt4',
+    'GOOGLEAPIKEY' => env('GOOGLEAPIKEY','AIzaSyCHKsduPMA-9LPTV6tp85EsjwBR0d3Kmt4'),
     /*
     |--------------------------------------------------------------------------
     | Application Name
