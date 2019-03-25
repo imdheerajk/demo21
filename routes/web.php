@@ -26,8 +26,7 @@ Route::get('/contactUs', function(){
             'zoom' => 12,
             'draggable' => true,
             'marker' => false,
-            'eventAfterLoad' =>
-            'circleListner(maps[0].shapes[0].circle_0);'
+
         ]
     );
 
@@ -50,3 +49,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/viewPost', 'viewPosts@index');
+
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

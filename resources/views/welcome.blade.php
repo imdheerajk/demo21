@@ -82,14 +82,20 @@
                     @endauth
                 </div>
             @endif
+                <image src="/images/home1.png" />
+        <div class="container">
 
             <div class="content">
+
                 <div class="title m-b-md">
+
                     My Blog
                 </div>
 
 
             </div>
+        </div>
+
         </div>
     </body>
 </html>

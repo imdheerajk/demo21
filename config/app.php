@@ -3,12 +3,7 @@
 return [
 
 
-    /*
-     ----------------------
-    Google maps API KEY
-    ------------------------
-     */
-    'GOOGLEAPIKEY' => env('GOOGLEAPIKEY','AIzaSyCHKsduPMA-9LPTV6tp85EsjwBR0d3Kmt4'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -182,6 +177,7 @@ return [
         MyBlog\Providers\EventServiceProvider::class,
         MyBlog\Providers\RouteServiceProvider::class,
         Cornford\Googlmapper\MapperServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
@@ -234,7 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
-
+        'Socialite' => \Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

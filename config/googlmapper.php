@@ -18,9 +18,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | A Google API key to link Googlmapper to Google's API.
-    |
+    |'key' => env('GOOGLE_API_KEY', 'app.GOOGLEAPIKEY'),
     */
-    'key' => env('GOOGLE_API_KEY', 'app.GOOGLEAPIKEY'),
+    'key' => env('GOOGLE_API_KEY', 'AIzaSyBCnCDQt2uZCHxCvaZJF1jl4w1_JCWMtJw'),
 
     /*
     |--------------------------------------------------------------------------
