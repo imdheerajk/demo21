@@ -6,7 +6,8 @@ use MyBlog\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Laravel\Socialite\Facades\Socialite;
-
+use MyBlog\Http\Controllers\viewPosts;
+use MyBlog\User;
 
 class LoginController extends Controller
 {
@@ -51,10 +52,32 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('facebook')->user();
+        $authUser = $this->findOrCreateUser($user);
+
+        \Auth::login($authUser, true);
+
+        return redirect()->guest('/home');
 
 
 
-        return $user->name;
+
     }
+
+
+   public function findOrCreateUser($fbUser)
+    {
+        $authUser = User::where('provider_id', $fbUser->id)->first();
+        if ($authUser) {
+            return $authUser;
+        }
+        return User::create([
+            'name'     => $fbUser->name,
+            'email'    => $fbUser->email,
+            'provider_id' => $fbUser->id,
+            'provider' => "Facebook",
+            'provider_id' => $fbUser->id
+        ]);
+    }
+
 
 }

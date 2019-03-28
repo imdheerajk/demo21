@@ -66,7 +66,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                <a class="btn btn-primary" href="{{ url('login/facebook') }}">Facebook Login</a>
+
                             </div>
+
                         </div>
                     </form>
                 </div>
