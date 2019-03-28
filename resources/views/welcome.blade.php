@@ -82,7 +82,7 @@
                     @endauth
                 </div>
             @endif
-                <image src="/images/home1.png" />
+
         <div class="container">
 
             <div class="content">

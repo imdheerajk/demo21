@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     <div class="card-title">
-                        Your Posts
+                        <h3>Popular Posts</h3>
                     </div>
                    @foreach ($post as $val)
                         <div class="card-header">{{$val->subject}}</div>

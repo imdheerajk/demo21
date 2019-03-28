@@ -24,14 +24,14 @@
                                 <label for="text" class="col-md-4 col-form-label text-md-right">Subject</label>
 
                                 <div class="col-md-6">
-                                <input type="text" name="subject" id="subject" class="form-control" required maxlength="40" minlength="10">
+                                <input type="text" name="subject" id="subject" class="form-control" required maxlength="80" minlength="10">
                                 </div><br/>
                             </div>
                             <div class="form-group row">
                                 <label for="text" class="col-md-4 col-form-label text-md-right">Create Post</label>
 
                                 <div class="col-md-6">
-                                    <textarea rows="7" maxlength="500"  class="form-control" id="createpost" name="createpost" required placeholder="Enter your text here..."></textarea>
+                                    <textarea rows="11" maxlength="500"  class="form-control" id="createpost" name="createpost" required placeholder="Enter your text here..."></textarea>
 
                                 </div><br/>
 
