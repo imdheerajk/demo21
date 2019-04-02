@@ -1,3 +1,14 @@
+This is blog for laravel practise, 
+Added functionality:
+
+Login/Register with facebook
+Store and retrive files on aws S3 (Simple store service)
+
+
+
+
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
