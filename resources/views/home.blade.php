@@ -21,7 +21,21 @@
                     </div>
                    @foreach ($post as $val)
                         <div class="card-header">{{$val->subject}}</div>
-                        <div class="card-body">{{$val->post}}</div>
+                        <div class="card-body">{{$val->post}}
+                            <?php
+                            if($val->img_path)
+                                {
+                                    echo '<hr/> <center><img src="'.$val->img_path.'" height="300px" width="300px" ></center>';
+                                }
+
+                            ?>
+
+
+
+
+                        </div>
+
+
 
                    @endforeach
 
