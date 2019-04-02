@@ -1,6 +1,7 @@
 <h2>This is blog for laravel practice</h2> 
 <p>Added functionality:</p>
 <ul>
+    <li>Google Maps API</li>
     <li>Login/Register with facebook</li>
     <li>Store and retrive files on aws S3 (Simple store service)</li>
 <ul>
