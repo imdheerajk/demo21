@@ -20,10 +20,36 @@ class createPostController extends Controller
         $userid = \Auth::user()->id;
         $datetime = date('Y-m-d H:i:s');
         $subject = $REQUEST->input('subject');
-        DB::table('post_blogs')->insert(
-            ['user_id' => $userid, 'post' => $post, 'subject'=>$subject, 'created_at'=>$datetime]
-        );
-        return redirect('/home')->with('status', 'Blog posted successfully');
+
+
+        if($REQUEST->has('myFile')){
+            //Upload image to AWS S3
+
+            $image = $REQUEST->file('myFile');
+            $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+            $s3 = \Storage::disk('s3');
+            $filePath = '/post-files/' . $imageFileName;
+            $s3->put($filePath, file_get_contents($image), 'public');
+
+            //Store name to the local database for access
+            $image_name = 'https://s3.'.env('AWS_REGION').'.amazonaws.com'.'/'.env('AWS_BUCKET').$filePath;
+            DB::table('post_blogs')->insert(
+                ['user_id' => $userid, 'post' => $post, 'subject'=>$subject, 'created_at'=>$datetime, 'img_path'=>$image_name]
+            );
+            return redirect('/home')->with('status', 'Blog posted successfully');
+        }
+        else
+        {
+            // cover_image is empty (and not an error)
+            DB::table('post_blogs')->insert(
+                ['user_id' => $userid, 'post' => $post, 'subject'=>$subject, 'created_at'=>$datetime]
+            );
+            return redirect('/home')->with('status', 'Blog posted successfully');
+
+        }
+
+
+
 
     }
 
@@ -48,5 +74,14 @@ class createPostController extends Controller
         );
         return redirect('/contactUs')->with('status', 'Your message sent successfully, Thanks!!!');
 
+    }
+
+    public function uploadfile()
+    {
+        return view('uploadFile');
+    }
+    public function displayS3()
+    {
+        return view('viewFile');
     }
 }

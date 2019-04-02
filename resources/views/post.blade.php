@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="card-body">
-                        <form method="post" action="/insertpost">
+                        <form method="post" action="/insertpost" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
                                 <label for="text" class="col-md-4 col-form-label text-md-right">Subject</label>
@@ -35,6 +35,11 @@
 
                                 </div><br/>
 
+                            </div>
+                            <div class="form-group row">
+                                <label for="myFile" class="col-md-4 col-form-label text-md-right">Upload File</label>
+
+                                <input type="file" name="myFile" class="col-md-4 form-control">
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-8 offset-md-4">

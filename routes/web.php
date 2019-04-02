@@ -12,6 +12,7 @@
 */
 
 use Cornford\Googlmapper\Facades\MapperFacade;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -53,3 +54,20 @@ Route::get('/viewPost', 'viewPosts@index');
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('/uploadFile', 'createPostController@uploadfile');
+Route::post('/upload', function (){
+    //dd(request()->file('myFile'));
+
+    $image = request()->file('myFile');
+    $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+    $s3 = \Storage::disk('s3');
+    $filePath = '/post-files/' . $imageFileName;
+    $s3->put($filePath, file_get_contents($image), 'public');
+    $url = Storage::url($imageFileName);
+    //request()->file('myFile')->store('post-files','s3');
+
+    return redirect('/uploadFile')->with('status', $url);
+});
+
+Route::get('/displayS3', 'createPostController@displayS3');

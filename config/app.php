@@ -16,7 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'My Blog'),
-
+    'aws' =>env('AWS_ACCESS_KEY_ID', 'test'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment
