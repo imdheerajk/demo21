@@ -20,7 +20,11 @@
                         <h3>Popular Posts</h3>
                     </div>
                    @foreach ($post as $val)
-                        <div class="card-header">{{$val->subject}}</div>
+                        <div class="card-header" style="background: #a1cbef"><font size="4 px">{{$val->subject}} </font>
+                            <hr/><font size="2 px">Posted at:
+                               <b>{{date('F j, Y', strtotime($val->created_at))}}</b>
+                                By:&nbsp&nbsp{{$val->name}}
+                            </font> </div>
                         <div class="card-body">{{$val->post}}
                             <?php
                             if($val->img_path)

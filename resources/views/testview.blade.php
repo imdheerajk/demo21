@@ -1,3 +1,11 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: dheerajk
+ * Date: 2019-04-04
+ * Time: 17:31
+ */
+?>
 @extends('layouts.master')
 @section('content')
 

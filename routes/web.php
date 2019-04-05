@@ -40,10 +40,11 @@ Route::get('/contactUs', function(){
 
 });
 Route::get('/aboutUs', 'userController@about');
-
+Route::get('/profile', 'userController@profile');
 
 Route::get('/createpost','createPostController@createPost')->middleware('auth');
 Route::post('/insertpost','createPostController@insertPost');
+Route::post('/updatedp','userController@updatedp');
 
 Route::post('/insertContactUsMsg' , 'createPostController@insertContactUsMessage');
 Auth::routes();
@@ -55,3 +56,4 @@ Route::get('/viewPost', 'viewPosts@index');
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('/testTemplate', 'viewPosts@test');
