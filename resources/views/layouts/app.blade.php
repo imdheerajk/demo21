@@ -82,6 +82,8 @@
                                 </li>
                             @endif
                         @else
+
+                            <img src="{{ Auth::user()->profile_pic }}" style="height: 30px; width: 30px; border-radius: 50%;" />
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -93,11 +95,12 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="/profile">{{__('Profile')}}</a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="/profile">{{__('Profile')}}</a>
+
+
                                 </div>
                             </li>
                         @endguest
@@ -107,7 +110,16 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
     </div>
 </body>

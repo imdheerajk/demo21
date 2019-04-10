@@ -44,7 +44,7 @@ class createPostController extends Controller
             DB::table('post_blogs')->insert(
                 ['user_id' => $userid, 'post' => $post, 'subject'=>$subject, 'created_at'=>$datetime]
             );
-            return redirect('/home')->with('status', 'Blog posted successfully');
+            return redirect('/createpost')->with('status', 'Blog posted successfully');
 
         }
 
@@ -83,5 +83,45 @@ class createPostController extends Controller
     public function displayS3()
     {
         return view('viewFile');
+    }
+
+    public function editPost($id)
+    {
+        $postid =DB::table('post_blogs')->find($id);
+        return view('editPost')->with('postid',$postid);
+
+    }
+
+    public function update(Request $request){
+
+        $postid = $request->input('id');
+        $post = $request->input('createpost');
+        $datetime = date('Y-m-d H:i:s');
+        $subject = $request->input('subject');
+
+        if($request->has('myFile'))
+        {
+            $image = $request->file('myFile');
+            $imageFileName = time() . '.' . $image->getClientOriginalExtension();
+            $s3 = \Storage::disk('s3');
+            $filePath = '/post-files/' . $imageFileName;
+            $s3->put($filePath, file_get_contents($image), 'public');
+
+            //Store name to the local database for access
+            $image_name = 'https://s3.'.env('AWS_REGION').'.amazonaws.com'.'/'.env('AWS_BUCKET').$filePath;
+
+            DB::table('post_blogs')
+                ->where('id', $postid)
+                ->update(['post' => $post, 'subject'=>$subject, 'updated_at'=>$datetime, 'img_path'=>$image_name]);
+        }
+        else
+        {
+            DB::table('post_blogs')
+                ->where('id', $postid)
+                ->update(['post' => $post, 'subject'=>$subject, 'updated_at'=>$datetime]);
+        }
+        return redirect('/viewPost')->with('status', 'Post Updated successfully');
+
+
     }
 }

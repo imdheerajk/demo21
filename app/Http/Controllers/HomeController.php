@@ -30,7 +30,7 @@ class HomeController extends Controller
         //SELECT p.subject, p.post, p.img_path, p.created_at, p.updated_at, u.name FROM `post_blogs` p INNER join users u WHERE p.user_id = u.id
         $data = DB::table('post_blogs')
             ->join('users', 'users.id','=','post_blogs.user_id')
-            ->select('post_blogs.subject', 'post_blogs.post', 'post_blogs.img_path', 'post_blogs.created_at', 'post_blogs.updated_at', 'users.name')
+            ->select('post_blogs.id','post_blogs.subject', 'post_blogs.post', 'post_blogs.img_path', 'post_blogs.created_at', 'post_blogs.updated_at', 'post_blogs.user_id', 'users.name')
             ->get();
 
         return view('home')->with('post',$data);

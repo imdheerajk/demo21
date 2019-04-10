@@ -32,9 +32,7 @@ Route::get('/contactUs', function(){
     );
 
     return view('contactUs');
-    //print '<div style="height: 400px; width: 400px">';
-    //print Mapper::render();
-   // print '</div>';
+
 
 
 
@@ -57,3 +55,12 @@ Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/testTemplate', 'viewPosts@test');
+
+
+//EDIT POSTS
+
+Route::get('editPost/{param1}', [
+    'uses'  => 'createPostController@editPost',
+    'as'    => 'editPost'
+]);
+Route::post('editPost', 'createPostController@update');
