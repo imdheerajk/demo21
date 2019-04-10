@@ -21,10 +21,11 @@ Route::get('/', function () {
 });
 Route::get('/contactUs', function(){
     Mapper::map(
-        50.447478,
-        -104.618253,
+
+        49.279653, -123.123529,
+
         [
-            'zoom' => 12,
+            'zoom' => 14,
             'draggable' => true,
             'marker' => false,
 
